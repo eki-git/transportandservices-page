@@ -1,0 +1,8 @@
+
+<svg width="300" height="100" xmlns="http://www.w3.org/2000/svg">
+  <rect width="300" height="100" fill="#222"/>
+  <text x="20" y="60" font-family="Verdana" font-size="32" fill="white">
+    Mi to <tspan fill="#FFA500">vozimo</tspan>
+  </text>
+  <path d="M 260 60 L 280 50 L 280 70 Z" fill="#FFA500"/>
+</svg>
