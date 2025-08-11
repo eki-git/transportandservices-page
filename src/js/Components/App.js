@@ -1,10 +1,16 @@
 import React from "react";
- import Home from "../Pages/Home";
- import Logo from "./Header/Logo/Logo";
- import Menu from "./Header/Menu/Menu";
- import Topline from "./Header/Topline/Topline";
- import Footer from "./Footer/Footer";
- import Banner from "./Banner/Banner";
+import Home from "../Pages/Home";
+import Logo from "./Header/Logo/Logo";
+import Menu from "./Header/Menu/Menu";
+import Topline from "./Header/Topline/Topline";
+import Banner from "./Banner/Banner";
+import Services from "./Services/Services";
+import FormSection from "./FormSection/FormSection";
+import Blog from "./Blog/Blog";
+import References from "./References/References";
+import Footer from "./Footer/Footer";
+
+
 
 const App = () => {
     return (
@@ -25,7 +31,10 @@ const App = () => {
              </div>
             {/*<Home/>*/}
             <Banner />
-
+            <Services />
+            <FormSection />
+            <Blog />
+            <References />
             <Footer />
         </>
     )
