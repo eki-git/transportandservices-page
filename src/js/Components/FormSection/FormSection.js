@@ -4,7 +4,7 @@ import "./_formSection.scss";
 const FormSection = () => {
     return (
         <section className="form-section">
-            <h2>PREVERI IN REZERVIRAJ TERMIN</h2>
+            <h2>PLANIRAJ IN REZERVIRAJ SVOJ TERMIN DANES</h2>
             <form>
                 <input type="text" placeholder="Ime in priimek" required />
                 <input type="email" placeholder="Email" required />
