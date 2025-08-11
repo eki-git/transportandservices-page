@@ -7,7 +7,8 @@ const Banner = () => {
         <section className="banner"
         style={{ backgroundImage: `url(${main})` }}>
             <div className="banner__overlay">
-                <h1>UGOTOVITE, ZAKAJ SMO #1 ZANESLJIV SELITVENI SERVIS<br/>
+                <h1>
+                    UGOTOVITE, ZAKAJ SMO #1 ZANESLJIV SELITVENI SERVIS<br/>
                     Smo selitveno podjetje z izkušenimi strokovnjaki,<br/>
                     ki vsako selitev opravijo skrbno, varno in učinkovito.
                     <span className="gradient">Naš cilj</span><br/>
@@ -15,6 +16,7 @@ const Banner = () => {
                     pozornostjo do podrobnosti in popolno predanostjo vašim potrebam.
                     Od prvega koraka do zadnjega kosa pohištva poskrbimo, da vse poteka gladko in brez skrbi.
                 </h1>
+                <p>Mi varno poskrbimo za vaše selitvene potrebe z ljubeznijo in skrbnostjo.</p>
                 <button className="banner__btn">
                     PRIDOBITE BREZPLAČNO PONUDBO
                 </button>
