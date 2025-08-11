@@ -1,0 +1,20 @@
+@use "./variables";
+
+@mixin mobile {
+  @media (max-width: 600px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: 601px) and (max-width: 900px) {
+    @content
+  }
+}
+
+%linear-gradient {
+  background: linear-gradient(90deg, #13B0F5 0%, #E70FAA 100%);
+  //background: linear-gradient(to right, #ff7e00, #ffcc00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

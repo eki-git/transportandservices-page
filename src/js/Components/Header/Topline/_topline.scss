@@ -1,0 +1,19 @@
+@use "../../../../scss/general/variables";
+@use "../../../../scss/general/mixins";
+
+.topline {
+  display: flex;
+  justify-content: space-between;
+}
+
+.topline__stars {
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+}
+
+.topline__tiktok {
+  display: flex;
+  justify-content: space-between;
+  gap: 27em;
+}
