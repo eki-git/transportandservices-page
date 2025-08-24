@@ -2,18 +2,18 @@
 import React from "react";
 import './_references.scss';  // če je ločen SCSS za to komponento
 
-const References = ({ title, description, link }) => {
+const References = ({reference = []}) => {
     return (
         <div className="reference__card">
-            <h3>{title}</h3>
-            <p>{description}</p>
-            {link && (
-                <a href={link} target="_blank" rel="noopener noreferrer">
-                    Več info
-                </a>
-            )}
+            {reference.map((ref, index) => (
+                <div key={index} className="reference__card__item">
+                    <h3>{ref.title}</h3>
+                    <p>{ref.description}</p>
+                    <a href={ref.link}>{ref.link}</a>
+                </div>
+                ))}
         </div>
-    )
-}
+    );
+};
 
 export default References;

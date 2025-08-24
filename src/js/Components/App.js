@@ -6,8 +6,8 @@ import Topline from "./Header/Topline/Topline";
 import Banner from "./Banner/Banner";
 import Services from "./Services/Services";
 import FormSection from "./FormSection/FormSection";
-import Blog from "./Blog/Blog";
 import References from "./References/References";
+import {reference} from "./References/reference";
 import Footer from "./Footer/Footer";
 
 
@@ -33,8 +33,7 @@ const App = () => {
             <Banner />
             <Services />
             <FormSection />
-            <Blog />
-            <References />
+            <References reference={reference} />
             <Footer />
         </>
     )

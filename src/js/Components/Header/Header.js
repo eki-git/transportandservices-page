@@ -1,4 +1,3 @@
-import React from "react";
 import Topline from "./Topline/Topline";
 import Logo from "./Logo/Logo";
 import Menu from "./Menu/Menu";
