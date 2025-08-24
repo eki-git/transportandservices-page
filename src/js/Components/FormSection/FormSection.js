@@ -13,7 +13,7 @@ const FormSection = () => {
                 <button type="submit">POŠLJI POVPRAŠEVANJE</button>
             </form>
         </section>
-    );
-};
+    )
+}
 
 export default FormSection;

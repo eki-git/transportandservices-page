@@ -1,10 +1,10 @@
-// src/components/Reference.js
-import React from 'react';
-import './Reference.scss';  // če imaš ločen SCSS za to komponento
+// src/js/Components/References/References.js
+import React from "react";
+import './_references.scss';  // če je ločen SCSS za to komponento
 
-const Reference = ({ title, description, link }) => {
+const References = ({ title, description, link }) => {
     return (
-        <div className="reference-card">
+        <div className="reference__card">
             <h3>{title}</h3>
             <p>{description}</p>
             {link && (
@@ -13,7 +13,7 @@ const Reference = ({ title, description, link }) => {
                 </a>
             )}
         </div>
-    );
-};
+    )
+}
 
-export default Reference;
+export default References;

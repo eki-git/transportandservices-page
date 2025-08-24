@@ -13,6 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 btn.textContent = 'Preberi več';
             }
-        });
-    });
-});
+        })
+    })
+})
+
+export default readMoreBtns;
+const readMoreBtns = document.querySelectorAll('.read-more-btn');
