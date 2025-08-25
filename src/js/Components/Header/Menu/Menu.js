@@ -1,6 +1,5 @@
-import React, {useState} from "react"; // ,useEffect
+import React, {useState} from "react";
 import "./_menu.scss";
-// import Picture from '../../../assets/menu.svg';
 
 const Menu = (props) => {
     const [mobile,setMobile] = useState(true);
@@ -19,4 +18,5 @@ const Menu = (props) => {
         </nav>
     )
 }
+
 export default Menu;

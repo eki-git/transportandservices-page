@@ -1,5 +1,6 @@
 @use "../../../../scss/general/variables";
 @use "../../../../scss/general/mixins";
+
 .menu {
   ul {
     display: flex;
@@ -27,6 +28,7 @@
       font-family: "DM Sans", sans-serif;
     }
   }
+
   .menu__toggle--icon {
     display: none;
     @include mixins.mobile {

@@ -1,6 +1,5 @@
-// src/js/Components/References/References.js
 import React from "react";
-import './_references.scss';  // če je ločen SCSS za to komponento
+import './_references.scss';
 
 const References = ({reference = []}) => {
     return (
