@@ -4,16 +4,33 @@
 .topline {
   display: flex;
   justify-content: space-between;
-}
+  align-items: center;
 
-.topline__stars {
-  display: flex;
-  justify-content: space-between;
-  gap: 1em;
-}
+  &__stars {
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
 
-.topline__tiktok {
-  display: flex;
-  justify-content: space-between;
-  gap: 27em;
+    img {
+      // Default: zvezdice vidne
+      display: inline-block;
+    }
+    // Media query za telefone
+    @media (max-width: 768px) {
+      img {
+        display: none; // skrije zvezdice
+      }
+    }
+  }
+
+  &__tiktok {
+    display: flex;
+    justify-content: space-between;
+    gap: 27em;
+
+    // Prilagoditev za manjše zaslone
+    @media (max-width: 768px) {
+      gap: 1em; // manjša razdalja med elementi
+    }
+  }
 }
