@@ -1,21 +1,23 @@
-.reference__card {
-  display: flex;
-  gap: 20px;
-  background-color: #f0f0f0;
-  padding: 15px 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 6px rgba(0,0,0,0.1);
-  margin-bottom: 20px;
+@use "../../../scss/general/mixins" as mixi;
 
-  .reference__card__item {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 33.33%;
+.reference__card {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+  margin-top: 5rem;
+  margin-bottom: 10rem;
+  padding: 0 13rem;
+  background-color: white;
+
+  &__item {
+    background-color: #f8f8f8;
+    padding: 40px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
 
     h3 {
-      margin-bottom: 10px;
+      margin-bottom: 15px;
       color: #222;
     }
 
@@ -34,14 +36,9 @@
     }
   }
 
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 10px;
-
-    .reference__card__item {
-      width: 100%;
-      align-items: flex-start;
-    }
+  @include mixi.mobile {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 0 20px;
   }
 }

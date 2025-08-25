@@ -1,13 +1,12 @@
 import React from "react";
-import Home from "../Pages/Home";
+import Topline from "./Header/Topline/Topline";
 import Logo from "./Header/Logo/Logo";
 import Menu from "./Header/Menu/Menu";
-import Topline from "./Header/Topline/Topline";
 import Banner from "./Banner/Banner";
 import Services from "./Services/Services";
 import FormSection from "./FormSection/FormSection";
 import References from "./References/References";
-import {reference} from "./References/reference";
+import { reference } from "./References/reference";
 import Footer from "./Footer/Footer";
 
 
@@ -16,7 +15,7 @@ const App = () => {
     return (
         <>
              <Topline/>
-             <div className="header">
+             <header className="header">
                  <Logo/>
                  <Menu type="header__nav"
                        items={
@@ -28,7 +27,7 @@ const App = () => {
                                { title: "Kontakt", url: "#contact" },
                            ]
                        }/>
-             </div>
+             </header>
             {/*<Home/>*/}
             <Banner />
             <Services />
@@ -36,7 +35,7 @@ const App = () => {
             <References reference={reference} />
             <Footer />
         </>
-    )
-}
+    );
+};
 
 export default App;

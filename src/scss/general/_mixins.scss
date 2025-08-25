@@ -12,9 +12,8 @@
   }
 }
 
-//  iz placeholder %linear-gradient v mixin
 @mixin linear-gradient-text {
-  background: linear-gradient(90deg, #13B0F5 0%, #E70FAA 100%);
+  background: linear-gradient(90deg, #ff7e00 0%, #E70FAA 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

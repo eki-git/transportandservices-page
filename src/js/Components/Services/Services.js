@@ -1,31 +1,29 @@
 import React from "react";
 import "./_services.scss";
 
-const services = [
-    { title: "SELITVE LOKALNO", text: "Preselimo celotno vaše gospodinjstvo ali podjetje iz enega kraja v drugega." },
-    { title: "MEDNARODNO V EU", text: "Selitev v tujino brez stresa, varno in pravočasno." },
-    { title: "KOMPLETI SELITEV", text: "Različni kompleti za selitev, brez skrbi glede malenkosti." },
-    { title: "SKLADIŠČNJE", text: "Začasna hramba stvari, ko jih ne morete vzeti s seboj." },
-    { title: "PAKIRANJE", text: "Škatle, trakovi, mehurčkasta folija. Vse to lahko naročite pri nas" },
-    { title: "NAKLAD / RAZKLAD", text: "Najem vozila z nalaganjem in razkladanjem." },
+const servicesData = [
+    { title: "Osebni prevoz", description: "Hitro in varno prevažamo vaše stvari." },
+    { title: "Selitve", description: "Profesionalne selitve za stanovanja in pisarne." },
+    { title: "Mednarodni transport", description: "Selitve in transport po EU." },
+    { title: "Pakiranje in zaščita", description: "Strokovno pakiranje in zaščita pohištva." },
+    { title: "Skladiščenje", description: "Zanesljivo skladiščenje vaše opreme." },
+    { title: "Dostava pohištva", description: "Hitre in varne dostave po dogovoru." },
 ];
 
 const Services = () => {
     return (
-        <section className="services">
-            <h2>NAŠE STORITVE</h2>
-            <p>Z našo profesionalno ekipo vam nudimo naslednje
-                storitve po dostopnih cenah...</p>
+        <section className="services" id="services">
+            <h2>Naše storitve</h2>
             <div className="services__grid">
-                {services.map((service, index) => (
-                    <div key={index} className="service-card">
+                {servicesData.map((service, index) => (
+                    <div className="service-card" key={index}>
                         <h3>{service.title}</h3>
-                        <p>{service.text}</p>
+                        <p>{service.description}</p>
                     </div>
                 ))}
             </div>
         </section>
-    )
-}
+    );
+};
 
 export default Services;

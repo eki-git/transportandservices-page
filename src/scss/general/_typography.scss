@@ -1,5 +1,6 @@
 @use "./variables";
 @use "mixins";
+
 h1 {
   font-size: 3.625em;
   color: variables.$headingColor;

@@ -9,8 +9,11 @@ const Banner = () => {
             <div className="banner__overlay">
                 <h1>
                     UGOTOVITE, ZAKAJ SMO #1 ZANESLJIV SELITVENI SERVIS<br/>
+                    <br/>
+
                     Smo selitveno podjetje z izkušenimi strokovnjaki,<br/>
                     ki vsako selitev opravijo skrbno, varno in učinkovito.<br/>
+                    <br/>
 
                     <span className="gradient">Naš cilj</span><br/>
                     je, da je vaša selitev brez stresa – z ljubeznijo,
