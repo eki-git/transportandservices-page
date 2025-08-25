@@ -10,7 +10,8 @@ const Banner = () => {
                 <h1>
                     UGOTOVITE, ZAKAJ SMO #1 ZANESLJIV SELITVENI SERVIS<br/>
                     Smo selitveno podjetje z izkušenimi strokovnjaki,<br/>
-                    ki vsako selitev opravijo skrbno, varno in učinkovito.
+                    ki vsako selitev opravijo skrbno, varno in učinkovito.<br/>
+
                     <span className="gradient">Naš cilj</span><br/>
                     je, da je vaša selitev brez stresa – z ljubeznijo,
                     pozornostjo do podrobnosti in popolno predanostjo vašim potrebam.

@@ -34,14 +34,14 @@
     }
   }
 
-  // Mobile-first / responsive
+
   @media (max-width: 768px) {
-    flex-direction: column;  // kartice gredo ena pod drugo
+    flex-direction: column;
     gap: 10px;
 
     .reference__card__item {
-      width: 100%;           // vsaka kartica zavzame cel zaslon
-      align-items: flex-start; // besedilo levo poravnano
+      width: 100%;
+      align-items: flex-start;
     }
   }
 }
