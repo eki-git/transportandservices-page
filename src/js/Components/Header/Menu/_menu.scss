@@ -1,0 +1,42 @@
+@use "../../../../scss/general/variables";
+@use "../../../../scss/general/mixins";
+
+.menu {
+  ul {
+    display: flex;
+    gap: 1em;
+    @include mixins.mobile {
+      flex-direction: column;
+      background: variables.$primaryColor;
+      width: 100%;
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 100px;
+      text-align: center;
+      padding: 2em;
+    }
+  }
+
+  li {
+    list-style: none;
+    margin-right: 2em;
+    font-weight: bold;
+    a {
+      color: variables.$adjacentColor;
+      text-decoration: none;
+      font-family: "DM Sans", sans-serif;
+    }
+  }
+
+  .menu__toggle--icon {
+    display: none;
+    @include mixins.mobile {
+      display: inline-block;
+      width: 3em;
+      position: fixed;
+      right: 2em;
+      top: 1.5em;
+    }
+  }
+}

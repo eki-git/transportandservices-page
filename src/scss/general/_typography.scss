@@ -1,0 +1,23 @@
+@use "./variables";
+@use "mixins";
+
+h1 {
+  font-size: 3.625em;
+  color: variables.$headingColor;
+  font-weight: 700;
+  @include mixins.mobile { font-size: 2em; }
+}
+
+h2 {
+  color: variables.$secondaryColor;
+  font-size: 3em;
+  font-weight: 700;
+  line-height: 1.625em;
+  @include mixins.mobile { font-size: 1.625em; }
+}
+
+h3 {
+  color: variables.$secondaryColor;
+  font-size: 1.625em;
+  @include mixins.mobile { font-size: 1.5em; }
+}

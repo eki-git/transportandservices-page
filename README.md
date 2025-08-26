@@ -26,4 +26,4 @@ cd transportandservices-page
 npm install
 # or
 yarn install
-npm start dev
+npm start

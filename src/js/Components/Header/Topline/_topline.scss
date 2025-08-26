@@ -1,0 +1,54 @@
+@use "../../../../scss/general/variables";
+@use "../../../../scss/general/mixins";
+
+.topline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+
+  &__stars {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    p {
+      margin: 0;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    img {
+      width: 80px;
+      height: auto;
+
+    }
+
+    @media (max-width: 768px) {
+      img { display: none; }
+    }
+  }
+
+  &__tiktok {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+
+    p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    img {
+      width: 24px;
+      height: auto;
+    }
+
+    @media (max-width: 768px) {
+      gap: 0.3rem;
+      font-size: 0.8rem;
+    }
+  }
+}
+
