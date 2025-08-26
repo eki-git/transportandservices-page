@@ -9,8 +9,6 @@ import References from "./References/References";
 import { reference } from "./References/reference";
 import Footer from "./Footer/Footer";
 
-
-
 const App = () => {
     return (
         <>
@@ -37,5 +35,6 @@ const App = () => {
         </>
     );
 };
+
 
 export default App;
