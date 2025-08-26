@@ -6,7 +6,7 @@ const Home = () => {
   return (
       <>
           <Header type="header" />
-        <p>HomePage</p>
+             <p>HomePage</p>
           <Footer type="footer" />
       </>
   )

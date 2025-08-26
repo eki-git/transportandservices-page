@@ -13,20 +13,19 @@ const App = () => {
     return (
         <>
              <Topline/>
-             <header className="header">
-                 <Logo/>
-                 <Menu type="header__nav"
-                       items={
-                           [
-                               { title: "Domov", url: "#" },
-                               { title: "Zakaj mi", url: "#about" },
-                               { title: "Osebni prevoz", url: "#stack" },
-                               { title: "Razišči", url: "#projects" },
-                               { title: "Kontakt", url: "#contact" },
-                           ]
-                       }/>
-             </header>
-            {/*<Home/>*/}
+                 <header className="header">
+                     <Logo/>
+                     <Menu type="header__nav"
+                           items={
+                               [
+                                   { title: "Domov", url: "#" },
+                                   { title: "Zakaj mi", url: "#about" },
+                                   { title: "Osebni prevoz", url: "#stack" },
+                                   { title: "Razišči", url: "#projects" },
+                                   { title: "Kontakt", url: "#contact" },
+                               ]
+                           }/>
+                 </header>
             <Banner />
             <Services />
             <FormSection />
@@ -35,6 +34,5 @@ const App = () => {
         </>
     );
 };
-
 
 export default App;

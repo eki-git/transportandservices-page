@@ -2,12 +2,12 @@ import React from "react";
 import "./_services.scss";
 
 const servicesData = [
-    { title: "Osebni prevoz", description: "Hitro in varno prevažamo vaše stvari." },
-    { title: "Selitve", description: "Profesionalne selitve za stanovanja in pisarne." },
-    { title: "Mednarodni transport", description: "Selitve in transport po EU." },
-    { title: "Pakiranje in zaščita", description: "Strokovno pakiranje in zaščita pohištva." },
-    { title: "Skladiščenje", description: "Zanesljivo skladiščenje vaše opreme." },
-    { title: "Dostava pohištva", description: "Hitre in varne dostave po dogovoru." },
+    { title: "Osebni prevoz", description: "Hitro in varno vas odpeljemo od A do B z osebnim ali transportnim vozilom." },
+    { title: "Selitve", description: "Profesionalne selitve za prevoz osebnih stvari, pohištva ali dostavo zaloge, izdelkov, paketov." },
+    { title: "Mednarodni transport", description: "Selitve in transport po celotni EU." },
+    { title: "Pakiranje in zaščita", description: "Strokovno pakiranje in zaščita na željo." },
+    { title: "Skladiščenje", description: "Zanesljivo skladiščenje vaše opreme prilagojeno vam." },
+    { title: "Dostava pohištva", description: "Hitre in varne dostave po dogovoru za velike in male potrebe." },
 ];
 
 const Services = () => {
