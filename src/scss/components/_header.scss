@@ -1,57 +1,88 @@
-@use "../general/variables" as *;
+@use "../general/variables" as variables;
 @use "../general/mixins" as mixins;
 
 .header {
-  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: variables.$primaryColor;
+  border-bottom: 1px solid variables.$secondaryColor;
 
-  &__bottom {
-    background-color: $primaryColor;
-    border-bottom: 1px solid $secondaryColor;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
+  div {
+    width: 301px;
   }
 
-  &__container {
-    width: 1200px;
+  .container {
+    max-width: 1200px;
     margin: 0 auto;
+    padding: 0.4rem 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
+
+  // ---- TOPLINE ----
+  //&__topline {
+  //  width: 100%;
+  //  background-color: #818181; // full-width sivina
+  //  display: flex;
+  //  justify-content: center;
+  //  align-items: center;
+  //  padding: 0.5rem 1rem; // malo manj paddinga kot prej
+  //  color: white; // da se lepo vidi tekst
+  //  font-size: 0.9rem;
+  //}
+
+  // ---- BOTTOM (logo + menu) ----
+  //&__bottom {
+  //  width: 100%;
+  //  background-color: variables.$primaryColor; // belo ozadje
+  //  border-bottom: 1px solid variables.$secondaryColor;
+  //
+  //  .header__container {
+  //    width: 1200px;
+  //    margin: 0 auto;
+  //    display: flex;
+  //    justify-content: space-between;
+  //    align-items: center;
+  //    padding: 1rem 0;
+  //  }
+  //}
+
+  // ---- LOGO ----
   &__logo {
     font-size: 1.5rem;
     font-weight: bold;
-    color: $adjacentColor;
+    color: variables.$adjacentColor;
 
     img {
       display: block;
       height: auto;
-      max-height: 60px; // prilagodi po potrebi
+      max-height: 55px; // prilagodi po potrebi
     }
   }
 
-  &__menu {
-    display: flex;
-    gap: 1.5rem;
-
-    a {
-      text-decoration: none;
-      color: $adjacentColor;
-      font-weight: 500;
-
-      &:hover {
-        color: $primaryColor;
-      }
-    }
-
-    @include mixins.mobile {
-      flex-direction: column;
-      gap: 1rem;
-      width: 100%;
-      text-align: center;
-    }
-  }
+  // ---- MENU ----
+  //&__menu {
+  //  display: flex;
+  //  gap: 1.5rem;
+  //
+  //  a {
+  //    text-decoration: none;
+  //    color: variables.$adjacentColor;
+  //    font-weight: 500;
+  //
+  //    &:hover {
+  //      color: variables.$primaryColor;
+  //    }
+  //  }
+  //
+  //  @include mixins.mobile {
+  //    flex-direction: column;
+  //    gap: 1rem;
+  //    width: 100%;
+  //    text-align: center;
+  //  }
+  //}
 }

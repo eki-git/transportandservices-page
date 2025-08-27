@@ -2,9 +2,13 @@
 @use "../../../../scss/general/mixins";
 
 .menu {
+  display: flex;
+  width: 580px;
+
   ul {
     display: flex;
     gap: 1em;
+
     @include mixins.mobile {
       flex-direction: column;
       background: variables.$primaryColor;

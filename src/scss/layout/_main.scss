@@ -1,14 +1,24 @@
+@use "scss-reset";
 @use "../general/variables" as *;
 @use "../general/mixins" as *;
 @use "../general/typography" as *;
 @use "../general/common" as *;
-
-@use "../components/header" as *;
-@use "../components/footer" as *;
+//
+//@use "../components/header" as *;
+//@use "../components/footer" as *;
 
 body {
   background-color: $primaryColor;
   font-family: $primaryFont;
 }
+
+//.container {
+//  max-width: 1200px;
+//  margin: 0 auto;
+//  display: flex;
+//  justify-content: center;
+//  align-items: center;
+//  padding: 0.5rem 0;
+//}
 
 
