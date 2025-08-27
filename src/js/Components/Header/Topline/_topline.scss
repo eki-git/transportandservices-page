@@ -1,12 +1,14 @@
 @use "../../../../scss/general/variables";
-@use "../../../../scss/general/mixins";
+@use "../../../../scss/general/mixins" as mixins;
 
 .topline {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #818181;
   padding: 0.5rem 1rem;
   font-size: 0.9rem;
+  color: variables.$primaryColor;
 
   &__stars {
     display: flex;
@@ -32,7 +34,7 @@
 
   &__tiktok {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     gap: 0.5rem;
 
     p {

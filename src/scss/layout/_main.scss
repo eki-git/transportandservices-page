@@ -1,7 +1,14 @@
-@use "../general/variables";
+@use "../general/variables" as *;
+@use "../general/mixins" as *;
+@use "../general/typography" as *;
+@use "../general/common" as *;
+
+@use "../components/header" as *;
+@use "../components/footer" as *;
 
 body {
-  background-color: variables.$primaryColor;
-  font-family: variables.$primaryFont;
+  background-color: $primaryColor;
+  font-family: $primaryFont;
 }
+
 
