@@ -5,7 +5,6 @@ import "./_topline.scss";
 
 const Topline = () => {
     return (
-        <>
             <div className="topline">
                 <div className="topline__stars">
                     <p><b>Izkušeni dostavljalci</b></p>
@@ -17,7 +16,6 @@ const Topline = () => {
                     <img src={tiktok} alt="Tiktok" />
                 </div>
             </div>
-        </>
     )
 }
 
