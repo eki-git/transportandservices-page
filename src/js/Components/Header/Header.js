@@ -4,13 +4,13 @@ import Menu from "./Menu/Menu";
 import "./_header.scss"
 
 const Header = ({ type }) => {
-    // Preverjamo, če smo na glavni strani ali na podstraneh
+    // Preverjamo, če na glavni strani ali podstraneh
     const isHomePage = window.location.pathname === '/';
 
-    // Različni menu items glede na to, kje se nahajamo
+    // Različni menu items glede, kje se nahaja
     const getMenuItems = () => {
         if (isHomePage) {
-            // Na glavni strani - scroll to sections
+            // glavna str
             return [
                 { title: "Domov", url: "#banner", type: "scroll" },
                 { title: "Zakaj mi", url: "#references", type: "scroll" },

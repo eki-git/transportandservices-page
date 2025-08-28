@@ -9,7 +9,7 @@ const Menu = (props) => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
     };
 
-    // Función para manejar clicks en enlaces
+
     const handleLinkClick = (item) => {
         setIsMobileMenuOpen(false);
 
@@ -57,16 +57,15 @@ const Menu = (props) => {
             };
 
             window.addEventListener('scroll', handleScroll);
-            handleScroll(); // Klic ob mount
+            handleScroll();
 
             return () => window.removeEventListener('scroll', handleScroll);
         } else {
-            // Na podstraneh označimo aktivno stran
             setActiveSection(window.location.pathname);
         }
     }, []);
 
-    // Zapreti mobilni meni ob kliku zunaj
+    // zapri mobilni meni ob kliku zunaj
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (isMobileMenuOpen && !event.target.closest('.menu')) {
@@ -78,7 +77,7 @@ const Menu = (props) => {
         return () => document.removeEventListener('click', handleClickOutside);
     }, [isMobileMenuOpen]);
 
-    // Prepreči scroll na body ko je mobilni meni odprt
+    // stop scroll na body ko je mobilni meni odprt
     useEffect(() => {
         if (isMobileMenuOpen) {
             document.body.style.overflow = 'hidden';
@@ -100,7 +99,6 @@ const Menu = (props) => {
                 // Link na sekcijo na glavni strani
                 return window.location.pathname === '/' && activeSection === item.url.substring(1);
             } else {
-                // Običajen link
                 return window.location.pathname === item.url;
             }
         }
@@ -109,7 +107,7 @@ const Menu = (props) => {
 
     return (
         <nav className="menu" role="navigation" aria-label="Glavna navigacija">
-            {/* Hamburger ikona */}
+            {/* Hamburger meni */}
             <button
                 className={`menu__toggle ${isMobileMenuOpen ? 'active' : ''}`}
                 onClick={toggleMobileMenu}

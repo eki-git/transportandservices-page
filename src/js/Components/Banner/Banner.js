@@ -6,7 +6,7 @@ const Banner = () => {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
-        // Animacija ob naložitvi
+
         const timer = setTimeout(() => {
             setIsVisible(true);
         }, 100);

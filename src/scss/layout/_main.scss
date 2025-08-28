@@ -3,9 +3,6 @@
 @use "../general/mixins" as *;
 @use "../general/typography" as *;
 @use "../general/common" as *;
-//
-//@use "../components/header" as *;
-//@use "../components/footer" as *;
 
 body {
   background-color: $primaryColor;

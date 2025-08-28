@@ -16,7 +16,7 @@ import Explore from "../Pages/Explore/Explore";
 const App = () => {
     const [currentPath, setCurrentPath] = React.useState(window.location.pathname);
 
-    // Enostaven router - spremlja spremembe URL-ja
+    // simpl router - za spremembe URL-ja
     useEffect(() => {
         const handlePopState = () => {
             setCurrentPath(window.location.pathname);
@@ -24,7 +24,7 @@ const App = () => {
 
         window.addEventListener('popstate', handlePopState);
 
-        // Scroll to section if hash is present
+        // scroll do section če hash is present
         if (window.location.hash) {
             setTimeout(() => {
                 const element = document.querySelector(window.location.hash);
@@ -42,7 +42,7 @@ const App = () => {
         };
     }, []);
 
-    // Renderiranje različnih strani
+    // Renderiranje razl. strani
     const renderPage = () => {
         switch (currentPath) {
             case '/osebni-prevoz':

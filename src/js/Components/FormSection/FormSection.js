@@ -57,23 +57,23 @@ const FormSection = () => {
         return newErrors;
     };
 
-    // pošiljanje na JSONSilo z API keyjem
+
     const submitToJsonSilo = async (data) => {
-        // uporabi environment variables
+
         const api = process.env.REACT_APP_JSONSILO_ENDPOINT;
         const apiKey = process.env.REACT_APP_JSONSILO_KEY;
 
-        // pripravi headers
+
         const headers = {
             'Content-Type': 'application/json',
         };
 
-        // dodaj X-SILO-KEY če je na voljo
+
         if (apiKey) {
             headers['X-SILO-KEY'] = apiKey;
         }
 
-        // uporabi endpoint iz environment variable
+
         const endpoint = api
             ? `https://api.jsonsilo.com/${api}`
             : 'https://api.jsonsilo.com/05fb1e36-3739-4f64-9f28-42fee5b373c9';
