@@ -1,27 +1,3 @@
-// import React, {useState} from "react";
-// import "./_menu.scss";
-//
-// const Menu = (props) => {
-//     const [mobile,setMobile] = useState(true);
-//
-//     const toggleMobile = () => { setMobile(!mobile); }
-//     return (
-//         <nav className="menu">
-//             <img onClick={toggleMobile} src="../../../../assets/menu.svg" className="menu__toggle--icon" alt="mobile toggle"/>
-//             <ul style={{ visibility: mobile ? "visible" : "hidden" }}>
-//                 {props.items.map((item, i) => (
-//                     <li key={i}>
-//                         <a href={item.url}>{item.title}</a>
-//                     </li>
-//                 ))}
-//             </ul>
-//         </nav>
-//     )
-// }
-//
-//
-// export default Menu;
-
 import React, { useState, useEffect } from "react";
 import "./_menu.scss";
 
@@ -33,48 +9,63 @@ const Menu = (props) => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
     };
 
-    // Zapri mobilni meni ko kliknemo na link
-    const handleLinkClick = (url) => {
+
+    const handleLinkClick = (item) => {
         setIsMobileMenuOpen(false);
 
-        // Smooth scroll do sekcije
-        if (url.startsWith('#')) {
-            const element = document.querySelector(url);
-            if (element) {
-                element.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+        if (item.type === 'scroll') {
+            // Smooth scroll do sekcije na trenutni strani
+            if (item.url.startsWith('#')) {
+                const element = document.querySelector(item.url);
+                if (element) {
+                    element.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            }
+        } else if (item.type === 'link') {
+            // Navigacija na drugo stran
+            if (item.url.startsWith('/#')) {
+                // Link na sekcijo na glavni strani
+                window.location.href = item.url;
+            } else {
+                // Običajen link
+                window.location.href = item.url;
             }
         }
     };
 
-    // Zaznavanje aktivne sekcije med scrollom
+    // Zaznavanje aktivne sekcije med scrollom (samo na glavni strani)
     useEffect(() => {
-        const handleScroll = () => {
-            const sections = ['#banner', '#services', '#contact'];
-            let current = '';
+        if (window.location.pathname === '/') {
+            const handleScroll = () => {
+                const sections = ['#banner', '#services', '#references', '#contact'];
+                let current = '';
 
-            sections.forEach(sectionId => {
-                const element = document.querySelector(sectionId);
-                if (element) {
-                    const rect = element.getBoundingClientRect();
-                    if (rect.top <= 100 && rect.bottom >= 100) {
-                        current = sectionId;
+                sections.forEach(sectionId => {
+                    const element = document.querySelector(sectionId);
+                    if (element) {
+                        const rect = element.getBoundingClientRect();
+                        if (rect.top <= 100 && rect.bottom >= 100) {
+                            current = sectionId;
+                        }
                     }
-                }
-            });
+                });
 
-            setActiveSection(current);
-        };
+                setActiveSection(current);
+            };
 
-        window.addEventListener('scroll', handleScroll);
-        handleScroll(); // Klic ob mount
+            window.addEventListener('scroll', handleScroll);
+            handleScroll();
 
-        return () => window.removeEventListener('scroll', handleScroll);
+            return () => window.removeEventListener('scroll', handleScroll);
+        } else {
+            setActiveSection(window.location.pathname);
+        }
     }, []);
 
-    // Zapreti mobilni meni ob kliku zunaj
+    // zapri mobilni meni ob kliku zunaj
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (isMobileMenuOpen && !event.target.closest('.menu')) {
@@ -86,7 +77,7 @@ const Menu = (props) => {
         return () => document.removeEventListener('click', handleClickOutside);
     }, [isMobileMenuOpen]);
 
-    // Prepreči scroll na body ko je mobilni meni odprt
+    // stop scroll na body ko je mobilni meni odprt
     useEffect(() => {
         if (isMobileMenuOpen) {
             document.body.style.overflow = 'hidden';
@@ -99,9 +90,24 @@ const Menu = (props) => {
         };
     }, [isMobileMenuOpen]);
 
+    // Preveri, če je link aktiven
+    const isLinkActive = (item) => {
+        if (item.type === 'scroll') {
+            return activeSection === item.url;
+        } else if (item.type === 'link') {
+            if (item.url.startsWith('/#')) {
+                // Link na sekcijo na glavni strani
+                return window.location.pathname === '/' && activeSection === item.url.substring(1);
+            } else {
+                return window.location.pathname === item.url;
+            }
+        }
+        return false;
+    };
+
     return (
         <nav className="menu" role="navigation" aria-label="Glavna navigacija">
-            {/* Hamburger ikona */}
+            {/* Hamburger meni */}
             <button
                 className={`menu__toggle ${isMobileMenuOpen ? 'active' : ''}`}
                 onClick={toggleMobileMenu}
@@ -119,10 +125,10 @@ const Menu = (props) => {
                     <li key={i} className="menu__item">
                         <a
                             href={item.url}
-                            className={`menu__link ${activeSection === item.url ? 'active' : ''}`}
+                            className={`menu__link ${isLinkActive(item) ? 'active' : ''}`}
                             onClick={(e) => {
                                 e.preventDefault();
-                                handleLinkClick(item.url);
+                                handleLinkClick(item);
                             }}
                         >
                             {item.title}
@@ -133,11 +139,15 @@ const Menu = (props) => {
                 {/* Dodatni CTA gumb v mobilnem meniju */}
                 <li className="menu__item menu__cta-mobile">
                     <a
-                        href="#contact"
+                        href={window.location.pathname === '/' ? '#contact' : '/#contact'}
                         className="menu__cta-button"
                         onClick={(e) => {
                             e.preventDefault();
-                            handleLinkClick('#contact');
+                            const contactItem = {
+                                url: window.location.pathname === '/' ? '#contact' : '/#contact',
+                                type: window.location.pathname === '/' ? 'scroll' : 'link'
+                            };
+                            handleLinkClick(contactItem);
                         }}
                     >
                         Kontakt

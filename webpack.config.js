@@ -2,6 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const Dotenv = require('dotenv-webpack'); // DODAJ TO
 
 const entryPath = "src";
 
@@ -13,6 +14,7 @@ module.exports = {
         filename: "out.js",
         path: path.resolve(__dirname, `${entryPath}/build`),
         clean: true,
+        publicPath: "/",
     },
     devServer: {
         open: true,
@@ -28,8 +30,18 @@ module.exports = {
             writeToDisk: true,
         },
         compress: true,
-        port: 3006,
-        historyApiFallback: true,
+        port: 3002,
+        historyApiFallback: {
+            rewrites: [
+                { from: /^\/osebni-prevoz/, to: '/index.html' },
+                { from: /^\/razisci/, to: '/index.html' },
+            ],
+        },
+    },
+    resolve: {  // DODAJ RESOLVE SECTION
+        fallback: {
+            "crypto": false
+        }
     },
     module: {
         rules: [
@@ -73,6 +85,7 @@ module.exports = {
         new webpack.ProvidePlugin({
             process: "process/browser",
         }),
+        new Dotenv(), // DODAJ TO
         new HtmlWebpackPlugin({
             filename: "index.html",
             template: entryPath +"/index.html",
@@ -81,6 +94,5 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: "css/style.css",
         }),
-
     ],
 };

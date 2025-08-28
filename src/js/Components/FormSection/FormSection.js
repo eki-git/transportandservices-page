@@ -1,28 +1,8 @@
-// import React from "react";
-// import "./_formSection.scss";
-//
-// const FormSection = () => {
-//     return (
-//         <section className="form-section">
-//             <h2>PLANIRAJ IN REZERVIRAJ SVOJ TERMIN DANES</h2>
-//             <form>
-//                 <input type="text" placeholder="Ime in priimek" required />
-//                 <input type="email" placeholder="Email" required />
-//                 <input type="tel" placeholder="Telefon" required />
-//                 <textarea placeholder="Vaše sporočilo"></textarea>
-//                 <button type="submit">POŠLJI POVPRAŠEVANJE</button>
-//             </form>
-//         </section>
-//     )
-// }
-//
-// export default FormSection;
-
 import React, { useState } from "react";
 import "./_formSection.scss";
 
 const FormSection = () => {
-    // State za upravljanje podatkov obrazca
+    // state za upravljanje podatkov iz obrazca
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -30,14 +10,14 @@ const FormSection = () => {
         message: ''
     });
 
-    // State za napake validacije
+    // state za napake validacije
     const [errors, setErrors] = useState({});
 
-    // State za status pošiljanja
+    // state za status pošiljanja
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState(null);
 
-    // Funkcija za upravljanje sprememb v poljih
+    // funk za upravljanje sprememb v poljih
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({
@@ -45,7 +25,7 @@ const FormSection = () => {
             [name]: value
         }));
 
-        // Počisti napako za to polje, ko uporabnik začne tipkati
+        // počisti napako za to polje, ko uporabnik začne tipkati
         if (errors[name]) {
             setErrors(prev => ({
                 ...prev,
@@ -54,12 +34,12 @@ const FormSection = () => {
         }
     };
 
-    // Validacija obrazca
+    // validacija obrazca
     const validateForm = () => {
         const newErrors = {};
 
         if (!formData.name.trim()) {
-            newErrors.name = 'Ime in priimek je obvezno';
+            newErrors.name = 'Ime in priimek je obvezen';
         }
 
         if (!formData.email.trim()) {
@@ -77,13 +57,30 @@ const FormSection = () => {
         return newErrors;
     };
 
-    // Pošiljanje na JSONSilo
+
     const submitToJsonSilo = async (data) => {
-        const response = await fetch('https://jsonsilo.com/public/your-bin-id', {
+
+        const api = process.env.REACT_APP_JSONSILO_ENDPOINT;
+        const apiKey = process.env.REACT_APP_JSONSILO_KEY;
+
+
+        const headers = {
+            'Content-Type': 'application/json',
+        };
+
+
+        if (apiKey) {
+            headers['X-SILO-KEY'] = apiKey;
+        }
+
+
+        const endpoint = api
+            ? `https://api.jsonsilo.com/${api}`
+            : 'https://api.jsonsilo.com/05fb1e36-3739-4f64-9f28-42fee5b373c9';
+
+        const response = await fetch(endpoint, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers,
             body: JSON.stringify({
                 ...data,
                 timestamp: new Date().toISOString(),
@@ -98,7 +95,7 @@ const FormSection = () => {
         return response.json();
     };
 
-    // Upravljanje oddaje obrazca
+    // upravljanje oddaje obrazca
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -128,7 +125,7 @@ const FormSection = () => {
             <div className="form-section__container">
                 <h2>PLANIRAJ IN REZERVIRAJ SVOJ TERMIN DANES</h2>
 
-                {/* Status sporočila */}
+                {/* status sporočila */}
                 {submitStatus === 'success' && (
                     <div className="form-section__success" role="alert">
                         ✅ Hvala! Vaše sporočilo je bilo uspešno poslano. Kontaktirali vas bomo v najkrajšem času.
