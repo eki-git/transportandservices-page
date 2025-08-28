@@ -1,12 +1,20 @@
 @use "../../../../scss/general/variables";
-@use "../../../../scss/general/mixins";
+@use "../../../../scss/general/mixins" as mixins;
 
 .topline {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem 1rem;
+  width: 100%;
+  background-color: #8181812b;
   font-size: 0.9rem;
+  color: variables.$adjacentColor;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.4rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
   &__stars {
     display: flex;
@@ -16,39 +24,51 @@
     p {
       margin: 0;
       font-weight: 500;
-      font-size: 0.9rem;
     }
 
     img {
       width: 80px;
       height: auto;
-
     }
 
     @media (max-width: 768px) {
-      img { display: none; }
+      img {
+        display: none;
+      }
     }
   }
 
   &__tiktok {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
     gap: 0.5rem;
+
+    .topline__phone {
+      color: inherit;
+      text-decoration: none;
+      font-weight: bold;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
 
     p {
       margin: 0;
-      font-size: 0.9rem;
     }
 
-    img {
+    .topline__tiktok-link img {
       width: 24px;
-      height: auto;
+      height: 24px;
+      cursor: pointer;
     }
 
     @media (max-width: 768px) {
-      gap: 0.3rem;
-      font-size: 0.8rem;
+      .topline__tiktok {
+        flex-direction: column;
+        gap: 0.3rem;
+        font-size: 0.8rem;
+      }
     }
   }
 }
-

@@ -1,25 +1,3 @@
 @use "./mixins";
 
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
 
-.tech {
-  .tech__social {
-    display: flex;
-    flex-wrap: wrap;
-    width: 80%;
-    justify-content: center;
-    margin-top: 10em;
-
-    img {
-      margin-right: 6em;
-      margin-bottom: 6em;
-      @include mixins.mobile {
-        margin-right: 2em;
-      }
-    }
-  }
-}
