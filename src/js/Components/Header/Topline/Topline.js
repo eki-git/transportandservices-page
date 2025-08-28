@@ -14,7 +14,7 @@ const Topline = () => {
                     </div>
 
                     <div className="topline__tiktok">
-                        <a href="tel:+38640400101" className="topline__phone">
+                        <a href="tel:+38640417099" className="topline__phone">
                             040/400-101
                         </a>
                         <a href="https://www.tiktok.com/@tvoj_profil" target="_blank"
