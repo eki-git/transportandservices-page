@@ -1,0 +1,251 @@
+@use "../../../scss/general/mixins" as mixins;
+
+.personal-transport {
+  &__hero {
+    background: linear-gradient(135deg, #ff7e00 0%, #e66c00 100%);
+    color: white;
+    padding: 120px 20px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>');
+      background-size: 50px 50px;
+    }
+
+    &-content {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+
+      @include mixins.mobile {
+        font-size: 2rem;
+      }
+    }
+
+    p {
+      font-size: 1.3rem;
+      opacity: 0.9;
+
+      @include mixins.mobile {
+        font-size: 1.1rem;
+      }
+    }
+  }
+
+  &__services {
+    padding: 80px 20px;
+    background: #f8f9fa;
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+      color: #222;
+
+      @include mixins.mobile {
+        font-size: 2rem;
+        margin-bottom: 40px;
+      }
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+
+      @include mixins.mobile {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+
+    .service-card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      border-top: 4px solid #ff7e00;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+      }
+
+      .service-icon {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      h3 {
+        color: #222;
+        margin-bottom: 15px;
+        font-size: 1.3rem;
+      }
+
+      p {
+        color: #666;
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+          color: #555;
+          margin-bottom: 8px;
+          position: relative;
+          padding-left: 20px;
+
+          &::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #ff7e00;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+
+  &__features {
+    padding: 80px 20px;
+    background: white;
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+      color: #222;
+
+      @include mixins.mobile {
+        font-size: 2rem;
+        margin-bottom: 40px;
+      }
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+
+      @include mixins.mobile {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+
+    .feature {
+      padding: 20px;
+
+      h3 {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+        color: #222;
+      }
+
+      p {
+        color: #666;
+        line-height: 1.6;
+      }
+    }
+  }
+
+  &__cta {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #222 0%, #333 100%);
+    color: white;
+    text-align: center;
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+
+      @include mixins.mobile {
+        font-size: 2rem;
+      }
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+
+      @include mixins.mobile {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    .btn-primary, .btn-secondary {
+      padding: 15px 30px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-block;
+      min-width: 150px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #ff7e00 0%, #e66c00 100%);
+      color: white;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(255, 126, 0, 0.4);
+      }
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+
+      &:hover {
+        background: white;
+        color: #222;
+      }
+    }
+  }
+}

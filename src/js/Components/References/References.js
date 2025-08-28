@@ -1,22 +1,3 @@
-// import React from "react";
-// import './_references.scss';
-//
-// const References = ({reference = []}) => {
-//     return (
-//         <div className="reference__card">
-//             {reference.map((ref, index) => (
-//                 <div key={index} className="reference__card__item">
-//                     <h3>{ref.title}</h3>
-//                     <p>{ref.description}</p>
-//                     <a href={ref.link}>{ref.link}</a>
-//                 </div>
-//                 ))}
-//         </div>
-//     );
-// };
-//
-// export default References;
-
 import React, { useState, useEffect, useRef } from "react";
 import './_references.scss';
 
@@ -67,11 +48,11 @@ const References = ({ reference = [] }) => {
     return (
         <section className="references-section">
             <div className="references-header">
-                <h2>Kaj pravijo naši zadovoljni stranke</h2>
-                <p>Prepričajte se o kvaliteti naših storitev</p>
+                <h2>Kaj pravijo naše zadovoljne stranke</h2>
+                <p>Zaupanje v naše kvalitetne storitev</p>
             </div>
 
-            {/* Desktop Grid */}
+            {/* desktop grid */}
             <div className="reference__card desktop-grid" ref={containerRef}>
                 {reference.map((ref, index) => (
                     <div
@@ -104,14 +85,14 @@ const References = ({ reference = [] }) => {
 
                         {ref.link && (
                             <a href={ref.link} className="reference__link" target="_blank" rel="noopener noreferrer">
-                                Preberi več
+                                Preberi več..
                             </a>
                         )}
                     </div>
                 ))}
             </div>
 
-            {/* Mobile Carousel */}
+            {/* mobile carousel */}
             <div className="reference__carousel mobile-only">
                 <div
                     className="reference__carousel-container"
@@ -141,7 +122,7 @@ const References = ({ reference = [] }) => {
                     ))}
                 </div>
 
-                {/* Carousel indicators */}
+                {/* carousel indikator */}
                 <div className="reference__indicators">
                     {reference.map((_, index) => (
                         <button
@@ -153,7 +134,7 @@ const References = ({ reference = [] }) => {
                     ))}
                 </div>
 
-                {/* Navigation buttons */}
+                {/* navi buttons */}
                 <button
                     className="carousel-nav prev"
                     onClick={() => setCurrentIndex(prev => prev === 0 ? reference.length - 1 : prev - 1)}

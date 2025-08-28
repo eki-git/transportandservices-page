@@ -1,15 +1,7 @@
-// import React from "react";
-// // import Home from "../Pages/Home";
-// // require('dotenv').config()
-// const App = () => <Home/>;
-//
-// export default App;
-
-import React from "react";
+import React, { useEffect } from "react";
 import Topline from "./Header/Topline/Topline";
-import Header from "./Header/Header";
-// import Logo from "./Header/Logo/Logo";
-// import Menu from "./Header/Menu/Menu";
+import Logo from "./Header/Logo/Logo";
+import Menu from "./Header/Menu/Menu";
 import Banner from "./Banner/Banner";
 import Services from "./Services/Services";
 import FormSection from "./FormSection/FormSection";
@@ -17,34 +9,93 @@ import References from "./References/References";
 import { reference } from "./References/reference";
 import Footer from "./Footer/Footer";
 
+// Komponente za strani
+import PersonalTransport from "../Pages/PersonalTransport/PersonalTransport";
+import Explore from "../Pages/Explore/Explore";
 
 const App = () => {
-    return (
-        <>
-            <Topline/>
-            <Header type="header" />
+    const [currentPath, setCurrentPath] = React.useState(window.location.pathname);
 
-            <main>
-                <section id="banner">
-                    <Banner />
-                </section>
+    // Enostaven router - spremlja spremembe URL-ja
+    useEffect(() => {
+        const handlePopState = () => {
+            setCurrentPath(window.location.pathname);
+        };
 
-                <section id="services">
-                    <Services />
-                </section>
+        window.addEventListener('popstate', handlePopState);
 
-                <section id="references">
-                    <References reference={reference} />
-                </section>
+        // Scroll to section if hash is present
+        if (window.location.hash) {
+            setTimeout(() => {
+                const element = document.querySelector(window.location.hash);
+                if (element) {
+                    element.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            }, 100);
+        }
 
-                <section id="contact">
-                    <FormSection />
-                </section>
-            </main>
+        return () => {
+            window.removeEventListener('popstate', handlePopState);
+        };
+    }, []);
 
-            <Footer />
-        </>
-    );
+    // Renderiranje različnih strani
+    const renderPage = () => {
+        switch (currentPath) {
+            case '/osebni-prevoz':
+                return <PersonalTransport />;
+            case '/razisci':
+                return <Explore />;
+            default:
+                // Glavna stran
+                return (
+                    <>
+                        <Topline/>
+                        <header className="header">
+                            <div className="header__inner container">
+                                <Logo type="header__logo"/>
+                                <Menu
+                                    type="header__menu"
+                                    items={[
+                                        { title: "Domov", url: "#banner", type: "scroll" },
+                                        { title: "Zakaj mi", url: "#references", type: "scroll" },
+                                        { title: "Storitve", url: "#services", type: "scroll" },
+                                        { title: "Osebni prevoz", url: "/osebni-prevoz", type: "link" },
+                                        { title: "Razišči", url: "/razisci", type: "link" },
+                                        { title: "Kontakt", url: "#contact", type: "scroll" },
+                                    ]}
+                                />
+                            </div>
+                        </header>
+
+                        <main>
+                            <section id="banner">
+                                <Banner />
+                            </section>
+
+                            <section id="services">
+                                <Services />
+                            </section>
+
+                            <section id="references">
+                                <References reference={reference} />
+                            </section>
+
+                            <section id="contact">
+                                <FormSection />
+                            </section>
+                        </main>
+
+                        <Footer />
+                    </>
+                );
+        }
+    };
+
+    return <div className="app">{renderPage()}</div>;
 };
 
 export default App;

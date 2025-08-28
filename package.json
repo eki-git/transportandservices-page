@@ -13,11 +13,12 @@
   "scripts": {
     "start": "webpack serve",
     "build": "webpack",
+    "build-vercel": "webpack && cp -r src/build/* .",
     "predeploy": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "Robi Pritrznik",
+  "author": "Erik R.",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.27.7",
@@ -44,13 +45,9 @@
   },
   "dependencies": {
     "date-fns": "^4.1.0",
+    "dotenv": "^17.2.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "scss-reset": "^1.4.6"
-  },
-  "resolve": {
-    "fallback": {
-      "crypto": false
-    }
   }
 }
