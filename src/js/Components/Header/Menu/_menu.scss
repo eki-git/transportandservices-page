@@ -1,46 +1,293 @@
-@use "../../../../scss/general/variables";
-@use "../../../../scss/general/mixins";
+//@use "../../../../scss/general/variables";
+//@use "../../../../scss/general/mixins";
+//
+//.menu {
+//  display: flex;
+//  width: 580px;
+//
+//  ul {
+//    display: flex;
+//    gap: 1em;
+//
+//    @include mixins.mobile {
+//      flex-direction: column;
+//      background: variables.$primaryColor;
+//      width: 100%;
+//      position: fixed;
+//      left: 0;
+//      right: 0;
+//      top: 100px;
+//      text-align: center;
+//      padding: 2em;
+//    }
+//  }
+//
+//  li {
+//    list-style: none;
+//    margin-right: 2em;
+//    font-weight: bold;
+//    a {
+//      color: variables.$adjacentColor;
+//      text-decoration: none;
+//      font-family: "DM Sans", sans-serif;
+//    }
+//  }
+//
+//  .menu__toggle--icon {
+//    display: none;
+//    @include mixins.mobile {
+//      display: inline-block;
+//      width: 3em;
+//      position: fixed;
+//      right: 2em;
+//      top: 1.5em;
+//    }
+//  }
+//}
+
+@use "../../../../scss/general/variables" as vars;
+@use "../../../../scss/general/mixins" as mixins;
 
 .menu {
-  display: flex;
-  width: 580px;
+  position: relative;
+  z-index: 1000;
 
-  ul {
+  &__list {
     display: flex;
-    gap: 1em;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 
     @include mixins.mobile {
-      flex-direction: column;
-      background: variables.$primaryColor;
-      width: 100%;
       position: fixed;
+      top: 0;
       left: 0;
       right: 0;
-      top: 100px;
-      text-align: center;
-      padding: 2em;
+      bottom: 0;
+      background: linear-gradient(135deg, #222 0%, #333 100%);
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2.5rem;
+      padding: 2rem;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(10px);
+
+      &.open {
+        transform: translateX(0);
+      }
     }
   }
 
-  li {
-    list-style: none;
-    margin-right: 2em;
-    font-weight: bold;
-    a {
-      color: variables.$adjacentColor;
-      text-decoration: none;
-      font-family: "DM Sans", sans-serif;
+  &__item {
+    position: relative;
+
+    &.menu__cta-mobile {
+      display: none;
+      margin-top: 1rem;
+
+      @include mixins.mobile {
+        display: block;
+      }
     }
   }
 
-  .menu__toggle--icon {
-    display: none;
+  &__link {
+    color: vars.$adjacentColor;
+    text-decoration: none;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+
+    // Hover efekt
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #ff7e00, #e66c00);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    &:hover {
+      color: #ff7e00;
+
+      &::before {
+        width: 100%;
+      }
+    }
+
+    &.active {
+      color: #ff7e00;
+      font-weight: 700;
+
+      &::before {
+        width: 100%;
+      }
+    }
+
     @include mixins.mobile {
-      display: inline-block;
-      width: 3em;
-      position: fixed;
-      right: 2em;
-      top: 1.5em;
+      color: white;
+      font-size: 1.5rem;
+      padding: 1rem;
+      text-align: center;
+      opacity: 0;
+      animation: slideInFromRight 0.5s ease-out forwards;
+
+      @for $i from 1 through 5 {
+        &:nth-child(#{$i}) {
+          animation-delay: #{$i * 0.1}s;
+        }
+      }
+
+      &:hover, &.active {
+        color: #ff7e00;
+        background: rgba(255, 126, 0, 0.1);
+        transform: scale(1.05);
+      }
+
+      &::before {
+        display: none;
+      }
     }
+  }
+
+  &__cta-button {
+    background: linear-gradient(135deg, #ff7e00 0%, #e66c00 100%);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 126, 0, 0.3);
+
+    &:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(255, 126, 0, 0.4);
+    }
+
+    &:active {
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  &__toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 1001;
+    position: relative;
+
+    @include mixins.mobile {
+      display: flex;
+      position: fixed;
+      right: 1.5rem;
+      top: 1.5rem;
+    }
+
+    &-line {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: vars.$adjacentColor;
+      border-radius: 2px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-origin: center;
+
+      &:not(:last-child) {
+        margin-bottom: 6px;
+      }
+
+      @include mixins.mobile {
+        background: #333;
+      }
+    }
+
+    &.active {
+      .menu__toggle-line {
+        background: white;
+
+        &:nth-child(1) {
+          transform: translateY(8px) rotate(45deg);
+        }
+
+        &:nth-child(2) {
+          opacity: 0;
+          transform: scale(0);
+        }
+
+        &:nth-child(3) {
+          transform: translateY(-8px) rotate(-45deg);
+        }
+      }
+    }
+  }
+
+  &__overlay {
+    display: none;
+
+    @include mixins.mobile {
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      animation: fadeIn 0.3s ease-out;
+    }
+  }
+}
+
+// Animacije
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// Posebni stili za tablet
+@include mixins.tablet {
+  .menu__list {
+    gap: 1.5rem;
+  }
+
+  .menu__link {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
   }
 }

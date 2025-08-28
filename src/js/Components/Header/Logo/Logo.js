@@ -1,10 +1,10 @@
 import React from "react";
 import logo from "../../../../assets/logo.svg";
 
-const Logo = (props) => {
+const Logo = ({ type }) => {
     return (
-        <div className={props.type}>
-            <img src={logo} alt="Logo" />
+        <div className={type}>
+                <img src={logo} alt="Logo" />
         </div>
     )
 }
