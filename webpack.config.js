@@ -12,7 +12,7 @@ module.exports = {
     devtool: "inline-source-map",
     output: {
         filename: "out.js",
-        path: path.resolve(__dirname, `${entryPath}/build`),
+        path: path.resolve(__dirname, "build"),
         clean: true,
         publicPath: "/",
     },
